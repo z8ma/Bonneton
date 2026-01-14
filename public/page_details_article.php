@@ -150,7 +150,7 @@ $_SESSION['message'] = "L'article a été ajouté au panier avec succès !";
             exit;
         }
     }
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['add_to_cart'])) {
         if (isset($_SESSION['id'])) {
             $user_id = $_SESSION['id'];
             $sql = "INSERT INTO panier (user_id, article_id) VALUES ('$user_id', '$article_id')";

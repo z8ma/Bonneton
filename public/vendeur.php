@@ -23,7 +23,7 @@ include("includes/header.php");
     $connexion = obtenirConnexion();
     $user_id = $_SESSION['id'];
 
-    $requete_mes_articles = "SELECT * FROM article WHERE user_id >= '$user_id'";
+    $requete_mes_articles = "SELECT * FROM article WHERE user_id = '$user_id'";
     $resultat_mes_articles = $connexion->query($requete_mes_articles);
 
     if ($resultat_mes_articles->num_rows > 0) {

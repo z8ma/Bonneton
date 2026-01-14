@@ -44,7 +44,7 @@ include("includes/header.php");
                     echo "<div class='right-section'>";
                     echo "<img src='" . $row["img"] . "' alt='" . $row["article_name"] . "'>";
                     echo "</div>";
-                    echo "</div></a>"; ?>
+                    echo "</div>"; ?>
                     <?php
 
                     $nombre_total_articles++;
@@ -55,7 +55,7 @@ include("includes/header.php");
                 <p>Votre panier est vide... mais pas pour longtemps<br>Découvrez nos articles</p>
                 <section class="haut">
                     <div>
-                        <p><a href="articles.php">Nos Produits</a></p>
+                        <p><a href="article.php">Nos Produits</a></p>
                     </div><br>
                 </section>
             <?php endif; ?>

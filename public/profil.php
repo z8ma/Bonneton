@@ -32,7 +32,7 @@ include("includes/menu.php");
                <img class="image" src="img/lock.png">
                <label class="text-content">Modifier vos informations personnelles</label>
             </a>
-            <a class="contentlien" href="contactsupport.php">
+            <a class="contentlien" href="contactSupport.php">
                <img class="image" src="img/support.png">
                <label class="text-content">Contacter notre Service Client par téléphone ou e-mail</label>
             </a>
