@@ -9,12 +9,8 @@ if (!isset($_SESSION['accounttype'])) {
             exit();
         }else{
 
-            $bdd = mysqli_connect("localhost", "root", "", "site");
-
-            $bdd = new mysqli('localhost','root','','site');
-            if($bdd->connect_error){
-                die('Connection failed : '.$bdd->connect_error);
-            }else{
+            include '../includes/config.php';
+            $bdd = obtenirConnexion();
                 $user_id=$_GET['id'];
                 $rqt=$bdd->prepare("DELETE FROM user WHERE id='$user_id'");
                 $rqt->execute();
@@ -22,7 +18,7 @@ if (!isset($_SESSION['accounttype'])) {
                 $rqt->close();
                 $bdd->close();
                 exit();
-            }
+            
         }
     }
     ?>

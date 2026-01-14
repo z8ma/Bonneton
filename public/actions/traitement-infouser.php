@@ -23,15 +23,13 @@
 		exit();
 	}
 
-	$bdd = mysqli_connect('localhost','root','','site');
-	if($bdd->connect_error){
-		die('Connection failed : '.$bdd->connect_error);
-	}else{
+	include '../includes/config.php';
+	$bdd = obtenirConnexion();
 		$rqt=$bdd->prepare("UPDATE user SET nom='$nom', prenom='$prenom', email='$email', dateden='$dateden' WHERE id='$iduser'");
 		$rqt->execute();
 		header("Location: ../profil.php");
 		$rqt->close();
 		$bdd->close();
 		exit();
-	}
+
 ?>

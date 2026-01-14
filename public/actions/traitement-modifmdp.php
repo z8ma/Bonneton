@@ -22,10 +22,8 @@
 		exit();
 	}
 
-	$bdd = mysqli_connect('localhost','root','','site');
-	if($bdd->connect_error){
-		die('Connection failed : '.$bdd->connect_error);
-	}else{
+	include '../includes/config.php';
+	$bdd = obtenirConnexion();
 		$id=$_SESSION['id'];
 		$rqt=("SELECT motdepasse FROM user WHERE id='$id'");
 		$result= mysqli_query($bdd,$rqt);
@@ -51,5 +49,5 @@
 				$bdd->close();
 			}
 		}
-	}	
+	
 ?>

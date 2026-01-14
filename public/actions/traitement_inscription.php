@@ -32,10 +32,8 @@
 
 
 	/*var_dump($_POST)*/
-	$bdd = new mysqli('localhost','root','','site');
-	if($bdd->connect_error){
-		die('Connection failed : '.$bdd->connect_error);
-	}else{
+	include '../includes/config.php';
+	$bdd = obtenirConnexion();
 		//regardes si il existe déjà un compte avec le même mail
 		$rqt=("SELECT * from user WHERE email='$email'");
 		$result= mysqli_query($bdd,$rqt);
@@ -63,7 +61,7 @@
 			$bdd->close();
 			exit();
 		}
-	}
+
 
 
 ?>

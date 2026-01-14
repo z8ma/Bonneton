@@ -24,11 +24,8 @@ include("includes/header.php");
 		<h1>Votre <i>Recherche :</i></h1>
 	</section>
 	<?php
-	$bdd = new mysqli('localhost', 'root', '', 'site');
-
-	if ($bdd->connect_error) {
-		die("Connexion échouée: " . $bdd->connect_error);
-	}
+	include 'includes/config.php';
+	$bdd = obtenirConnexion();
 
 	if (isset($_POST['req'])) {
 		$search = mysqli_real_escape_string($bdd, htmlspecialchars($_POST['req']));

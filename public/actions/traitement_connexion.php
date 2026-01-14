@@ -31,10 +31,8 @@
 
 
 									//Connexion + teste si pseudo et motdepasse correct
-	$bdd = new mysqli('localhost','root','','site');
-	if($bdd->connect_error){
-		die('Connection failed : '.$bdd->connect_error);
-	}else{
+	include '../includes/config.php';
+	$bdd = obtenirConnexion();
 		$rqt= "select * from user where email = '$email'";
 		$result= mysqli_query($bdd,$rqt);
 		$row=mysqli_fetch_assoc($result);//tableau associatif pour enregistrer dans la session
@@ -62,7 +60,8 @@
 				header("Location: ../login.php?error=*Mot de passe incorrect !");
 				exit();
 			}
-		}}
+		}
+
 
 
 

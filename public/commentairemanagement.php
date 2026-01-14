@@ -12,12 +12,10 @@ if (!isset($_SESSION['accounttype'])) {
 		exit();
 	} else {
 
-		$bdd = new mysqli('localhost', 'root', '', 'site');
-		if ($bdd->connect_error) {
-			die('Connection failed : ' . $bdd->connect_error);
-		} else {
-			$req = ("SELECT id,user_id,contenu FROM commentaires");
-			$resultat = $bdd->query($req);
+		include 'includes/config.php';
+		$bdd = obtenirConnexion();
+		$req = ("SELECT id,user_id,contenu FROM commentaires");
+		$resultat = $bdd->query($req);
 ?>
 			<h1>Les commentaires</h1>
 			<div id='main'>
@@ -43,7 +41,7 @@ if (!isset($_SESSION['accounttype'])) {
 			</div>
 			<a class=button href="page_admin.php">Revenir à la page admin</a>
 <?php
-		}
+
 	}
 }
 ?>
