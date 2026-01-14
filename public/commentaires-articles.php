@@ -13,8 +13,8 @@ if ($resultat_afficher_com->num_rows > 0) {
 
         echo '<div class="commentaire">';
         echo '<div class="commentaire-content">';
-        echo '<p>' . $prenom . ' - <em>' . $row_com['date_commentaire'] . '</em></p>';
-        echo '<p>' . $row_com['contenu'] . '</p>';
+        echo '<p>' . e($prenom) . ' - <em>' . e($row_com['date_commentaire']) . '</em></p>';
+        echo '<p>' . e($row_com['contenu']) . '</p>';
         echo '</div>';
         echo '</div>';
     }

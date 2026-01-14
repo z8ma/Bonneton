@@ -33,7 +33,7 @@ include("includes/header.php");
                     <br/>
                     <a href="infouser.php" id="lienuser">Modifier mes informations</a>
                 </form>
-                <p style="color: red; font-family : sans-serif; font-size: 11px"><?php if(isset($_GET['error'])){echo $_GET['error'];}?></p>
+                <p style="color: red; font-family : sans-serif; font-size: 11px"><?php if(isset($_GET['error'])){echo e($_GET['error']);}?></p>
             </div>
         </div>
     </div>

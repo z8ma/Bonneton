@@ -32,7 +32,7 @@ include("includes/header.php");
 						<br/><br/><br/>
 						<input type="submit" id="bouton-connexion" value="connexion" name="connexion">
 						<br/>
-						<p style="color: red; font-family : sans-serif; font-size: 11px"><?php if(isset($_GET['error'])){echo $_GET['error'];}?></p>
+						<p style="color: red; font-family : sans-serif; font-size: 11px"><?php if(isset($_GET['error'])){echo e($_GET['error']);}?></p>
 
 					</div>
 

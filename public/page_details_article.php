@@ -70,14 +70,14 @@ $_SESSION['message'] = "L'article a été ajouté au panier avec succès !";
             if ($resultat->num_rows > 0) {
                 $row = $resultat->fetch_assoc();
                 echo "<div class='left-section'>";
-                echo "<img class='article-image' src='" . $row["img"] . "' alt='" . $row["article_name"] . "'>";
+                echo "<img class='article-image' src='" . e($row["img"]) . "' alt='" . e($row["article_name"]) . "'>";
                 echo "</div>";
                 echo "<div class='right-section'>";
-                echo "<h2>" . $row["article_name"] . "</h2>";
-                echo "<p>Prix : €" . $row["prix"] . "</p>";
+                echo "<h2>" . e($row["article_name"]) . "</h2>";
+                echo "<p>Prix : €" . e($row["prix"]) . "</p>";
                 echo "<div class='description'>";
                 echo "<h3>Description :</h3>";
-                echo "<p>" . $row["caract"] . "</p><br>";
+                echo "<p>" . e($row["caract"]) . "</p><br>";
                 echo "</div>";
                 echo "<div class='add-to-cart'>";
                 echo " <form method='post'>";
@@ -101,19 +101,19 @@ $_SESSION['message'] = "L'article a été ajouté au panier avec succès !";
                     $prenom = $row_com['prenom'];
                     echo '<div class="commentaire">';
                     echo '<div class="commentaire-content">';
-                    echo '<p>' . $prenom . ' - <em>' . $row_com['date_commentaire'] . '</em></p>';
-                    echo '<p>' . $row_com['contenu'] . '</p>';
+                    echo '<p>' . e($prenom) . ' - <em>' . e($row_com['date_commentaire']) . '</em></p>';
+                    echo '<p>' . e($row_com['contenu']) . '</p>';
                     if (!empty($row_com['img'])) {
-                        echo "<img src='" . $row_com['img'] . "' alt='Image du commentaire'>";
+                        echo "<img src='" . e($row_com['img']) . "' alt='Image du commentaire'>";
                     }
                     echo '</div>';
                     echo '</div>';
                 }
-                echo "<a class='commentaire-all-link' href='commentaires.php?id=" . $article_id . "'>Voir tous les commentaires</a>";
+                echo "<a class='commentaire-all-link' href='commentaires.php?id=" . e($article_id) . "'>Voir tous les commentaires</a>";
                 echo "</div>";
             } else {
                 echo "Pas de commentaires sous cet article";
-                echo "<a class='commentaire-all-link' href='commentaires.php?id=" . $article_id . "'>Voir tous les commentaires</a>";
+                echo "<a class='commentaire-all-link' href='commentaires.php?id=" . e($article_id) . "'>Voir tous les commentaires</a>";
             }
             $stmt_comments->close();
 

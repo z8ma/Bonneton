@@ -52,7 +52,7 @@ include("includes/header.php");
 
                             <p style="color: red; font-family : sans-serif; font-size: 11px">
                                 <?php if (isset($_GET['error'])) {
-                                    echo $_GET['error'];
+                                    echo e($_GET['error']);
                                 } ?></p>
                             <br />
                         </div>

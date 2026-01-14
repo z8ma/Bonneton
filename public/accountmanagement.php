@@ -46,9 +46,9 @@ if (!isset($_SESSION['accounttype'])) {
                 while ($row_user = $result_users->fetch_assoc()) {
                     if ($row_user['accounttype'] !== 'a') {
                         echo "<tr>";
-                        echo "<td>" . $row_user['id'] . "</td>";
-                        echo "<td>" . $row_user['nom'] . "</td>";
-                        echo "<td>" . $row_user['prenom'] . "</td>";
+                        echo "<td>" . e($row_user['id']) . "</td>";
+                        echo "<td>" . e($row_user['nom']) . "</td>";
+                        echo "<td>" . e($row_user['prenom']) . "</td>";
                         echo "<td><a href='actions/traitement-suppression.php?id=" . $row_user['id'] . "'>Supprimer</a></td>";
                         echo "</tr>";
                     }

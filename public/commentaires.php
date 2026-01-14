@@ -28,8 +28,8 @@ $connexion = obtenirConnexion();
             $stmt_article->close();
 
             if ($article) {
-                echo "<h2>Tous les commentaires pour : " . $article['article_name'] . "</h2>";
-                echo "<a class='commentaire-all-link' href='page_details_article.php?id=" . $article_id . "'>Retour a l'article</a>";
+                echo "<h2>Tous les commentaires pour : " . e($article['article_name']) . "</h2>";
+                echo "<a class='commentaire-all-link' href='page_details_article.php?id=" . e($article_id) . "'>Retour a l'article</a>";
             } else {
                 echo "Article introuvable.";
             }
@@ -44,10 +44,10 @@ $connexion = obtenirConnexion();
                 while ($row_com = $result_comments->fetch_assoc()) {
                     echo '<div class="commentaire">';
                     echo '<div class="commentaire-content">';
-                    echo '<p>' . $row_com['prenom'] . ' - <em>' . $row_com['date_commentaire'] . '</em></p>';
-                    echo '<p>' . $row_com['contenu'] . '</p>';
+                    echo '<p>' . e($row_com['prenom']) . ' - <em>' . e($row_com['date_commentaire']) . '</em></p>';
+                    echo '<p>' . e($row_com['contenu']) . '</p>';
                     if (!empty($row_com['img'])) {
-                        echo "<img src='" . $row_com['img'] . "' alt='Image du commentaire'>";
+                        echo "<img src='" . e($row_com['img']) . "' alt='Image du commentaire'>";
                     }
                     echo '</div>';
                     echo '</div>';

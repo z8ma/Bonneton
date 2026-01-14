@@ -28,7 +28,7 @@
             <?php if (!isset($_SESSION['id'])) { ?>
                 <li class="normal"><a href="login.php">Connexion</a></li>
             <?php } else { ?>
-                <li class="diffconnecte"><a href="profil.php"><?php echo $_SESSION['prenom'] ?></a></li>
+                <li class="diffconnecte"><a href="profil.php"><?php echo e($_SESSION['prenom']); ?></a></li>
             <?php } ?>
             <li class="diff"><a href="panier.php">Panier</a></li>
             </div>

@@ -73,7 +73,7 @@ include("includes/menu.php");
 						<p id="politique-texte">En vous enregistrant pour créer un compte, vous acceptez nos modalités d’utlisation. Veuillez lire notre <a style="text-decoration: none;" href="politique.php">politique de confidentialité</a>.</p>
 
 						<p style="color: red; font-family : sans-serif; font-size: 11px"><?php if (isset($_GET['error'])) {
-																								echo $_GET['error'];
+																								echo e($_GET['error']);
 																							} ?></p>
 						<br />
 					</div>
