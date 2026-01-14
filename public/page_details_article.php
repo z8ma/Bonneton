@@ -113,6 +113,7 @@ $_SESSION['message'] = "L'article a été ajouté au panier avec succès !";
                 echo "</div>";
             } else {
                 echo "Pas de commentaires sous cet article";
+                echo "<a class='commentaire-all-link' href='commentaires.php?id=" . $article_id . "'>Voir tous les commentaires</a>";
             }
 
 

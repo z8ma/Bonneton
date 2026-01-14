@@ -1,25 +1,17 @@
 <?php
 session_start();
-include("includes/header.php");
-include("includes/menu.php");
-?>
-<?php if (!isset($_SESSION['prenom'])) {
-
+if (!isset($_SESSION['prenom'])) {
    header("Location: accueil.php");
    exit();
-} else {  ?>
-
-   <!DOCTYPE html>
-   <html lang="fr">
-
-   <head>
-      <link rel="stylesheet" href="assets/css/profil-style.css">
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Profil</title>
+}
+include("includes/header.php");
+?>
+   <title>Profil</title>
+   <link rel="stylesheet" href="assets/css/profil-style.css">
    </head>
 
    <body>
+      <?php include("includes/menu.php"); ?>
       <div id="main">
          <div id="content">
             <?php if($_SESSION['accounttype'] === 's'){?>
@@ -48,8 +40,6 @@ include("includes/menu.php");
       <br /><br /><br />
    </body>
 
-   </html>
-
-<?php }
+<?php
 include("includes/footer.php");
 ?>

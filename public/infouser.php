@@ -1,25 +1,17 @@
 <?php
 session_start();
-include("includes/header.php");
-include("includes/menu.php");
-?>
-<?php if (!isset($_SESSION['prenom'])) {
-
+if (!isset($_SESSION['prenom'])) {
     header("Location: accueil.php");
     exit();
-} else {  ?>
-
-    <!DOCTYPE html>
-    <html lang="fr">
-
-    <head>
-        <link rel="stylesheet" href="assets/css/infouser-style.css">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Infos personnelles</title>
+} else {
+    include("includes/header.php");
+?>
+    <title>Infos personnelles</title>
+    <link rel="stylesheet" href="assets/css/infouser-style.css">
     </head>
 
     <body>
+        <?php include("includes/menu.php"); ?>
         <div id="main">
             <div id="fullcontent">
                 <div id="top-content">
@@ -53,10 +45,10 @@ include("includes/menu.php");
 
                 </div>
             </div>
+        </div>
     </body>
 
-    </html>
-
-<?php }
-include("includes/footer.php");
+<?php
+    include("includes/footer.php");
+}
 ?>

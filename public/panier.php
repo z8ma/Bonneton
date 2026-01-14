@@ -68,8 +68,8 @@ include("includes/header.php");
             </div>
             <a href="actions/valider_panier.php" class="valider-panier">
                 <div class="validation-section">
-
                     <p>Valider le panier</p>
+                </div>
             </a>
         </div>
         <br>

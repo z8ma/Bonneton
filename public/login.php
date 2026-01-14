@@ -1,19 +1,12 @@
 <?php
-   session_start();
-   include("includes/header.php");
-   include("includes/menu.php");
+session_start();
+include("includes/header.php");
 ?>
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-	<link rel="stylesheet" href="assets/css/login-style.css">
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Connexion</title>
-
+<title>Connexion</title>
+<link rel="stylesheet" href="assets/css/login-style.css">
 </head>
 <body>
+	<?php include("includes/menu.php"); ?>
 
 	<div id="main">
 		<div id="fullcontent">
@@ -48,11 +41,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
-</body>
-</html>
 <?php
 include("includes/footer.php");
 ?>
