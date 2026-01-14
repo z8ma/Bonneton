@@ -54,7 +54,7 @@ $_SESSION['message'] = "L'article a été ajouté au panier avec succès !";
 
 
         if (isset($_GET['id']) && !empty($_GET['id'])) {
-            $article_id = $_GET['id'];
+            $article_id = (int) $_GET['id'];
             include 'includes/config.php';
             $connexion = obtenirConnexion();
 
@@ -62,8 +62,10 @@ $_SESSION['message'] = "L'article a été ajouté au panier avec succès !";
                 die("Connexion échouée: " . $connexion->connect_error);
             }
 
-            $sql = "SELECT * FROM article WHERE id = $article_id";
-            $resultat = $connexion->query($sql);
+            $stmt_article = $connexion->prepare("SELECT * FROM article WHERE id = ?");
+            $stmt_article->bind_param("i", $article_id);
+            $stmt_article->execute();
+            $resultat = $stmt_article->get_result();
 
             if ($resultat->num_rows > 0) {
                 $row = $resultat->fetch_assoc();
@@ -85,20 +87,18 @@ $_SESSION['message'] = "L'article a été ajouté au panier avec succès !";
             } else {
                 echo "Aucun article trouvé.";
             }
+            $stmt_article->close();
 
-            $afficher_com = "SELECT * FROM commentaires WHERE article_id = $article_id ORDER BY date_commentaire DESC LIMIT 3";
-            $resultat_afficher_com = mysqli_query($connexion, $afficher_com);
+            $stmt_comments = $connexion->prepare("SELECT c.contenu, c.date_commentaire, c.img, u.prenom FROM commentaires c JOIN user u ON c.user_id = u.id WHERE c.article_id = ? ORDER BY c.date_commentaire DESC LIMIT 3");
+            $stmt_comments->bind_param("i", $article_id);
+            $stmt_comments->execute();
+            $resultat_afficher_com = $stmt_comments->get_result();
 
             if ($resultat_afficher_com->num_rows > 0) {
                 echo "<div class='commentaires'>";
                 echo "<h3>Commentaires</h3>";
-                while ($row_com = mysqli_fetch_assoc($resultat_afficher_com)) {
-                    $user_com = $row_com['user_id'];
-                    $requete_prenom = "SELECT prenom FROM user WHERE id = $user_com";
-                    $resultat_prenom = mysqli_query($connexion, $requete_prenom);
-                    $row_prenom = mysqli_fetch_assoc($resultat_prenom);
-                    $prenom = $row_prenom['prenom'];
-
+                while ($row_com = $resultat_afficher_com->fetch_assoc()) {
+                    $prenom = $row_com['prenom'];
                     echo '<div class="commentaire">';
                     echo '<div class="commentaire-content">';
                     echo '<p>' . $prenom . ' - <em>' . $row_com['date_commentaire'] . '</em></p>';
@@ -115,6 +115,7 @@ $_SESSION['message'] = "L'article a été ajouté au panier avec succès !";
                 echo "Pas de commentaires sous cet article";
                 echo "<a class='commentaire-all-link' href='commentaires.php?id=" . $article_id . "'>Voir tous les commentaires</a>";
             }
+            $stmt_comments->close();
 
 
             echo "<div class='comment-form'>";
@@ -199,18 +200,20 @@ $_SESSION['message'] = "L'article a été ajouté au panier avec succès !";
         }
     }
     if (isset($_POST['add_to_cart'])) {
-        if (isset($_SESSION['id'])) {
-            $user_id = $_SESSION['id'];
-            $sql = "INSERT INTO panier (user_id, article_id) VALUES ('$user_id', '$article_id')";
-            if ($connexion->query($sql) === TRUE) {
-                echo "<div class='alert alert-success'style=color: green;>" . $_SESSION['message'] . "</div>";
-                unset($_SESSION['message']);
+            if (isset($_SESSION['id'])) {
+                $user_id = $_SESSION['id'];
+                $stmt_panier = $connexion->prepare("INSERT INTO panier (user_id, article_id) VALUES (?, ?)");
+                $stmt_panier->bind_param("ii", $user_id, $article_id);
+                if ($stmt_panier->execute()) {
+                    echo "<div class='alert alert-success'style=color: green;>" . $_SESSION['message'] . "</div>";
+                    unset($_SESSION['message']);
+                } else {
+                    echo "Erreur lors de l'ajout de l'article au panier : " . $connexion->error;
+                }
+                $stmt_panier->close();
             } else {
-                echo "Erreur lors de l'ajout de l'article au panier : " . $connexion->error;
-            }
-        } else {
-            header("Location: login.php");
-            exit;
+                header("Location: login.php");
+                exit;
         }
         $connexion->close();
     }

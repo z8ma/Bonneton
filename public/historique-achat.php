@@ -18,8 +18,10 @@ $connexion = obtenirConnexion();
         exit;
     }
     $user_id = $_SESSION['id'];
-    $historique = "SELECT a.id, a.article_name, a.prix, h.date_achat, a.img FROM historique_achat h JOIN article a ON h.article_id = a.id WHERE h.user_id=$user_id ORDER BY h.date_achat DESC";
-    $aff_hist = mysqli_query($connexion, $historique);
+    $stmt_hist = $connexion->prepare("SELECT a.id, a.article_name, a.prix, h.date_achat, a.img FROM historique_achat h JOIN article a ON h.article_id = a.id WHERE h.user_id = ? ORDER BY h.date_achat DESC");
+    $stmt_hist->bind_param("i", $user_id);
+    $stmt_hist->execute();
+    $aff_hist = $stmt_hist->get_result();
     if ($aff_hist->num_rows > 0) {
 
         while ($row = $aff_hist->fetch_assoc()) {
@@ -33,3 +35,4 @@ $connexion = obtenirConnexion();
 
 
     include("includes/footer.php");
+    $stmt_hist->close();

@@ -11,8 +11,9 @@ if (!isset($_SESSION['accounttype'])) {
 
             include '../includes/config.php';
             $bdd = obtenirConnexion();
-                $user_id=$_GET['id'];
-                $rqt=$bdd->prepare("DELETE FROM user WHERE id='$user_id'");
+                $user_id = (int) $_GET['id'];
+                $rqt=$bdd->prepare("DELETE FROM user WHERE id = ?");
+                $rqt->bind_param("i", $user_id);
                 $rqt->execute();
                 header("Location: ../accountmanagement.php");
                 $rqt->close();

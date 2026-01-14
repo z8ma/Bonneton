@@ -27,8 +27,10 @@ include("includes/header.php");
     $connexion = obtenirConnexion();
     $user_id = $_SESSION['id'];
 
-    $requete_mes_articles = "SELECT * FROM article WHERE user_id = '$user_id'";
-    $resultat_mes_articles = $connexion->query($requete_mes_articles);
+    $stmt_articles = $connexion->prepare("SELECT * FROM article WHERE user_id = ?");
+    $stmt_articles->bind_param("i", $user_id);
+    $stmt_articles->execute();
+    $resultat_mes_articles = $stmt_articles->get_result();
 
     if ($resultat_mes_articles->num_rows > 0) {
 
@@ -44,5 +46,6 @@ include("includes/header.php");
 
     <?php
     include("includes/footer.php");
+    $stmt_articles->close();
     ?>
     </section>

@@ -11,8 +11,9 @@ if (!isset($_SESSION['accounttype'])) {
 
         include '../includes/config.php';
         $bdd = obtenirConnexion();
-            $id = $_GET['id'];
-            $rqt = $bdd->prepare("DELETE FROM commentaires WHERE id='$id'");
+            $id = (int) $_GET['id'];
+            $rqt = $bdd->prepare("DELETE FROM commentaires WHERE id = ?");
+            $rqt->bind_param("i", $id);
             $rqt->execute();
             header("Location: ../commentairemanagement.php");
             $rqt->close();

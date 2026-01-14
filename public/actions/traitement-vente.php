@@ -29,9 +29,10 @@ $connexion = obtenirConnexion();
 if (isset($_SESSION['id'])) {
     $user_id = $_SESSION['id'];
 
-    $rqt = "INSERT INTO article (user_id,article_name,caract,img,prix,mise_en_vente)	
-    VALUES ($user_id,'$nom','$caract','$img','$prix',NOW())";
-    $resultat = $connexion->query($rqt);
+    $stmt = $connexion->prepare("INSERT INTO article (user_id,article_name,caract,img,prix,mise_en_vente) VALUES (?, ?, ?, ?, ?, NOW())");
+    $stmt->bind_param("isssd", $user_id, $nom, $caract, $img, $prix);
+    $stmt->execute();
+    $stmt->close();
 
     header("Location: ../vendeur.php");
     $connexion->close();

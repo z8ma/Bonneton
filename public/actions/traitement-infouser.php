@@ -25,7 +25,8 @@
 
 	include '../includes/config.php';
 	$bdd = obtenirConnexion();
-		$rqt=$bdd->prepare("UPDATE user SET nom='$nom', prenom='$prenom', email='$email', dateden='$dateden' WHERE id='$iduser'");
+		$rqt=$bdd->prepare("UPDATE user SET nom = ?, prenom = ?, email = ?, dateden = ? WHERE id = ?");
+		$rqt->bind_param("ssssi", $nom, $prenom, $email, $dateden, $iduser);
 		$rqt->execute();
 		header("Location: ../profil.php");
 		$rqt->close();

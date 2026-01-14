@@ -28,17 +28,20 @@ include("includes/header.php");
 	$bdd = obtenirConnexion();
 
 	if (isset($_POST['req'])) {
-		$search = mysqli_real_escape_string($bdd, htmlspecialchars($_POST['req']));
-		$requete = "SELECT * FROM article WHERE article_name LIKE '%$search%'";
+		$search = trim($_POST['req']);
+		$requete = $bdd->prepare("SELECT * FROM article WHERE article_name LIKE ?");
+		$pattern = '%' . $search . '%';
+		$requete->bind_param("s", $pattern);
 		//On a essayer une version où la barre de recherche prend l'info la plus large avec $resultat sous forme de tableau
 		/*$resultat = explode(' ', $search);
 		$i = 0;
 		while (isset($resultat[$i])){
 			$requete = "SELECT * FROM article WHERE article_name LIKE '%$resultat[$i]%'";*/
 
-		$run_requete = mysqli_query($bdd, $requete);
+		$requete->execute();
+		$run_requete = $requete->get_result();
 		if ($run_requete->num_rows > 0) {
-			while ($row = mysqli_fetch_array($run_requete)) {
+			while ($row = $run_requete->fetch_assoc()) {
 				include("includes/affichage_article.php");
 			}
 			// $i++;

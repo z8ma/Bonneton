@@ -12,8 +12,10 @@ $connexion = obtenirConnexion();
 $user_id = $_SESSION['id'];
 
 
-$requete_panier = "SELECT article_id, article.article_name, article.prix, article.img FROM panier INNER JOIN article ON panier.article_id = article.id WHERE panier.user_id = $user_id";
-$resultat_panier = mysqli_query($connexion, $requete_panier);
+$stmt_panier = $connexion->prepare("SELECT article_id, article.article_name, article.prix, article.img FROM panier INNER JOIN article ON panier.article_id = article.id WHERE panier.user_id = ?");
+$stmt_panier->bind_param("i", $user_id);
+$stmt_panier->execute();
+$resultat_panier = $stmt_panier->get_result();
 
 
 $nombre_total_articles = 0;
@@ -86,4 +88,5 @@ include("includes/header.php");
     <br />
     <?php
     include("includes/footer.php");
+    $stmt_panier->close();
     ?>

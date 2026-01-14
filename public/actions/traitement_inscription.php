@@ -35,10 +35,13 @@
 	include '../includes/config.php';
 	$bdd = obtenirConnexion();
 		//regardes si il existe déjà un compte avec le même mail
-		$rqt=("SELECT * from user WHERE email='$email'");
-		$result= mysqli_query($bdd,$rqt);
-		$count=mysqli_num_rows($result);
+		$stmt_check = $bdd->prepare("SELECT 1 FROM user WHERE email = ?");
+		$stmt_check->bind_param("s", $email);
+		$stmt_check->execute();
+		$result = $stmt_check->get_result();
+		$count = $result->num_rows;
 		if($count>=1){
+			$stmt_check->close();
 			header("Location: ../register.php?error=*Vous avez déja crée un compte !");
 			exit();
 		}else{
@@ -46,10 +49,7 @@
 				values(?,?,?,?,?,?,?)");
 			$rqt->bind_param("sssssss",$titre, $nom, $prenom, $email, $hashmotdepasse, $dateden,$accounttype);
 			$rqt->execute();
-			$rqtid=("SELECT id from user WHERE email='$email'");
-			$result= mysqli_query($bdd,$rqtid);
-			$row=mysqli_fetch_assoc($result);
-			$id=$row['id'];
+			$id = $bdd->insert_id;
 			$_SESSION['titre']=$titre;
 			$_SESSION['nom']=$nom;
 			$_SESSION['prenom']=$prenom;
@@ -58,9 +58,12 @@
 			$_SESSION['id']=$id;
 			header("Location: ../accueil.php");
 			$rqt->close();
+			$stmt_check->close();
 			$bdd->close();
 			exit();
 		}
+
+		$stmt_check->close();
 
 
 

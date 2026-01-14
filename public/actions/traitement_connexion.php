@@ -33,10 +33,12 @@
 									//Connexion + teste si pseudo et motdepasse correct
 	include '../includes/config.php';
 	$bdd = obtenirConnexion();
-		$rqt= "select * from user where email = '$email'";
-		$result= mysqli_query($bdd,$rqt);
-		$row=mysqli_fetch_assoc($result);//tableau associatif pour enregistrer dans la session
-		$count=mysqli_num_rows($result); //compte le nombre de ligne dans le tableau reçu par la requête
+		$stmt = $bdd->prepare("SELECT * FROM user WHERE email = ?");
+		$stmt->bind_param("s", $email);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$row = $result->fetch_assoc();//tableau associatif pour enregistrer dans la session
+		$count = $result->num_rows; //compte le nombre de ligne dans le tableau reçu par la requête
 		if($count!==1){
 			header("Location: ../login.php?error=*Email incorrect !");
 			exit();
@@ -61,6 +63,7 @@
 				exit();
 			}
 		}
+		$stmt->close();
 
 
 

@@ -3,8 +3,10 @@ session_start();
 include '../includes/config.php';
 $connexion = obtenirConnexion();
 $user_id = $_SESSION['id'];
-$requete_supprimer_panier = "DELETE FROM panier WHERE user_id = $user_id";
-mysqli_query($connexion, $requete_supprimer_panier);
+$stmt_delete = $connexion->prepare("DELETE FROM panier WHERE user_id = ?");
+$stmt_delete->bind_param("i", $user_id);
+$stmt_delete->execute();
+$stmt_delete->close();
 
 
 header("Location: ../panier.php");

@@ -1,17 +1,15 @@
 <?php
 //affiche les commantaires selon la date de publication
-$afficher_com = "SELECT * FROM commentaires WHERE article_id = $article_id ORDER BY date_commentaire DESC LIMIT 3";
-$resultat_afficher_com = mysqli_query($connexion, $afficher_com);
+$stmt_comments = $connexion->prepare("SELECT c.contenu, c.date_commentaire, c.img, u.prenom FROM commentaires c JOIN user u ON c.user_id = u.id WHERE c.article_id = ? ORDER BY c.date_commentaire DESC LIMIT 3");
+$stmt_comments->bind_param("i", $article_id);
+$stmt_comments->execute();
+$resultat_afficher_com = $stmt_comments->get_result();
 
 if ($resultat_afficher_com->num_rows > 0) {
     echo "<div class='commentaires'>";
     echo "<h3>Commentaires</h3>";
-    while ($row_com = mysqli_fetch_assoc($resultat_afficher_com)) {
-        $user_com = $row_com['user_id'];
-        $requete_prenom = "SELECT prenom FROM user WHERE id = $user_com";
-        $resultat_prenom = mysqli_query($connexion, $requete_prenom);
-        $row_prenom = mysqli_fetch_assoc($resultat_prenom);
-        $prenom = $row_prenom['prenom'];
+    while ($row_com = $resultat_afficher_com->fetch_assoc()) {
+        $prenom = $row_com['prenom'];
 
         echo '<div class="commentaire">';
         echo '<div class="commentaire-content">';
@@ -35,3 +33,4 @@ if ($resultat_afficher_com->num_rows > 0) {
 } else {
     echo "Pas de commentaires sous cet article";
 }
+$stmt_comments->close();
