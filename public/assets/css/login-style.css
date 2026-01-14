@@ -76,12 +76,8 @@
  }
 
  .text-input {
- 	border: none;
  	width: 70%;
- 	height: 25px;
- 	background-color: #EFEFEF;
  	align-content: space-between;
- 	margin-bottom: 10px;
  }
 
  #dateden {
@@ -95,11 +91,7 @@
 
  .labtext {
  	text-align: left;
- 	font-family: sans-serif;
  	margin: auto;
- 	font-weight: bold;
- 	color: #676767;
- 	font-size: 13px;
  }
 
  #bouton-connexion {
@@ -110,9 +102,3 @@
  	background-color: black;
  }
 
- footer {
- 	background-color: black;
- 	color: white;
- 	padding: 20px 0;
- 	text-align: center;
- }
