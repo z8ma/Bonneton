@@ -1,0 +1,89 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: 'Playfair Display', sans-serif;
+    font-weight: thin;
+
+}
+
+.haut {
+    text-align: center;
+}
+
+.haut h1 {
+    font-size: 50px;
+    font-weight: 400;
+    text-align: center;
+    padding: 50px 200px 0px;
+}
+
+.haut h1 i {
+    font-weight: 50px;
+}
+
+
+.haut div {
+    background-color: black;
+    border-radius: 50% 20% / 10% 40%;
+    padding: 10px;
+    display: inline-block;
+}
+
+.haut div p a {
+    text-decoration: none;
+    color: white;
+}
+
+.haut div:hover {
+    background-color: #7D8491;
+    font-weight: 900;
+}
+
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.image-container img {
+    width: calc(31% - 10px);
+    max-width: 100%;
+    height: auto;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.bas h2 {
+    font-size: 48px;
+    font-weight: 400;
+    text-align: center;
+    padding: 50px 200px 0px;
+}
+
+.bas h2 i {
+    font-weight: 50px;
+}
+
+
+footer {
+    background-color: black;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+
+.footer-content a {
+    color: #fff;
+}
+
+.connexion {
+    text-align: center;
+}

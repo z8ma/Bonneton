@@ -1,0 +1,57 @@
+h1{
+    font-weight: thin;
+    font-style: oblique;
+    font-size: 48px;
+    font-weight: 400;
+    margin-left: 5px;
+    text-align: center;
+}
+
+h1:hover {
+    text-decoration: none;
+    font-weight: 900;
+}
+
+#main{
+	margin-top: 100px;
+	/*border: red solid;*/
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 500px;
+}
+
+th, tr{
+	padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+
+a{
+	display: block;
+    padding: 8px 12px;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.button{
+    display: block;
+    height:50px;
+    width: 10%;
+    margin: 20px auto auto auto;
+    border-radius: 8px;
+    color: white;
+    background-color: black;
+    align-items: center;
+    text-decoration: none;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+}

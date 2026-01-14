@@ -1,0 +1,62 @@
+<?php
+session_start();
+include("includes/header.php");
+include("includes/menu.php");
+?>
+<?php if (!isset($_SESSION['prenom'])) {
+
+    header("Location: accueil.php");
+    exit();
+} else {  ?>
+
+    <!DOCTYPE html>
+    <html lang="fr">
+
+    <head>
+        <link rel="stylesheet" href="assets/css/infouser-style.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Infos personnelles</title>
+    </head>
+
+    <body>
+        <div id="main">
+            <div id="fullcontent">
+                <div id="top-content">
+                    <h1 id="head-page">MES INFORMATIONS</h1>
+                </div>
+                <div id="content">
+                    <form method="POST" action="actions/traitement-infouser.php">
+                        <label for="nom" class="labtext">Votre Nom :</label>
+                        <br /><br />
+                        <input type="text" class="text-input" size="50" id="nom" name="nom" value=<?php echo $_SESSION['nom']; ?>>
+                        <br />
+                        <label for="prenom" class="labtext">Votre Prénom :</label>
+                        <br /><br />
+                        <input type="text" class="text-input" size="50" id="prenom" name="prenom" value=<?php echo $_SESSION['prenom']; ?>>
+                        <br />
+                        <label for="email" class="labtext">Votre E-mail :</label>
+                        <br /><br />
+                        <input type="email" class="text-input" size="50" id="email" name="email" pattern=".+@.+\..+" size="30" value=<?php echo $_SESSION['email']; ?>>
+                        <br />
+                        <label for="dateden" class="labtext">Votre Date de naissance :</label>
+                        <br /><br />
+                        <input type="Date" id="dateden" name="dateden">
+                        <br /><br />
+                        <input type="submit" name="sauvegarde" value="Sauvegarder" id="bouton">
+
+                        <a href="modifmdp.php" id="lienmdp">Modifier votre mot de passe </a>
+                    </form>
+                    <p style="color: red; font-family : sans-serif; font-size: 11px"><?php if (isset($_GET['error'])) {
+                                                                                            echo $_GET['error'];
+                                                                                        } ?></p>
+
+                </div>
+            </div>
+    </body>
+
+    </html>
+
+<?php }
+include("includes/footer.php");
+?>

@@ -1,0 +1,12 @@
+Bonneton propose un service d'achat/vente de bonnet.
+
+Les bases de données sont préremplies (ci-joint fichier .sql).
+La base de donnée compte déja un user admin avec les identifiants suivants: 
+
+email: admin@bonneton.com
+motdepasse: AZERTYUIOP
+
+
+et un compte vendeur qui vend déja 4 bonnets que vous pouvez acheter.
+
+Pour une utilisation optimale rejoignez la page d'accueil et laisser vous guider !!

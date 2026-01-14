@@ -1,0 +1,49 @@
+#main{
+	/*border: solid black;*/
+	height: 600px;
+}
+
+#content{
+	/*border: solid red;*/
+	width: 60%;
+	height: 100%;
+	margin:auto;
+
+}
+.contentlien{
+	text-decoration: none;
+	color: black;
+	display: block flex;
+	height: 70px;
+	width:30%;
+	margin: 20px auto;
+	padding: 2%;
+	border: 2px solid grey;
+	border-radius: 8px;
+	flex-shrink:0 ;
+	overflow: hidden;
+
+	transition: 0.3s;
+}
+
+.contentlien:hover{
+	background-color: #EFEFEF;
+}
+
+
+.image{
+	display: block;
+}
+.text-content{
+	margin:auto;
+	word-wrap: break-word;
+}
+#deco{
+	display: block;
+	height:100px;
+	width: 30%;
+	margin: auto;
+	border-radius: 8px;
+	color: white;
+	background-color: black;
+}

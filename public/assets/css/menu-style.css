@@ -1,0 +1,107 @@
+nav ul {
+    list-style-type: none;
+    margin: 20px;
+    padding: 0;
+    overflow: hidden;
+    float: right;
+    padding-top: 0px;
+}
+
+
+nav li {
+    float: left;
+}
+
+nav li a {
+    padding: 20px;
+    text-decoration: none;
+    display: inline-block;
+
+}
+
+nav li.normal a {
+    color: black;
+
+}
+
+nav li.diff a {
+    background-color: black;
+    color: white;
+    margin-left: 5px;
+    border-radius: 50% 20% / 10% 40%;
+    text-decoration: none;
+}
+
+nav li.diffconnecte a {
+    background-color: #E76060;
+    color: black;
+    border-radius: 50% 20% / 10% 40%;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+nav li.diffconnecte a:hover {
+    font-weight: 900;
+}
+
+nav li.normal:hover {
+    background-color: #e5e5e5;
+    font-weight: 900;
+}
+
+nav li.diff a:hover {
+    background-color: #7D8491;
+    font-weight: 900;
+}
+
+nav p {
+    font-weight: thin;
+    font-style: oblique;
+    font-size: 48px;
+    font-weight: 400;
+    margin-left: 5px;
+
+
+}
+
+nav p a {
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    padding: 20px;
+}
+
+nav p a:hover {
+    text-decoration: none;
+    font-weight: 900;
+}
+
+#li-bar:hover {
+    background-color: #e5e5e5;
+}
+
+#menu-content {
+    /*border:blue solid;*/
+    height: 200px;
+}
+
+#content-searchbar {
+    /*border: solid black;*/
+    padding: 17px;
+
+}
+
+#searchbar {
+    border: solid black;
+    border-radius: 8px;
+    width: 300px;
+    height: 30px;
+}
+
+#submit-button {
+    color: white;
+    background-color: black;
+    border: none;
+    height: 30px;
+
+}

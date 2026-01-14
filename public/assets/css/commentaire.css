@@ -1,0 +1,46 @@
+.commentaires {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.commentaire {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.commentaire-content {
+    color: #333;
+}
+
+.commentaire-content p {
+    margin: 5px 0;
+}
+
+.commentaire-form {
+    margin-top: 20px;
+}
+
+.commentaire-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.commentaire-form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.commentaire-form input[type="submit"]:hover {
+    background-color: #333;
+}

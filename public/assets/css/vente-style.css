@@ -1,0 +1,123 @@
+#main {
+    background-color: #E1E1E1;
+    /*border: solid black;*/
+}
+
+#fullcontent {
+    margin: 100px auto 100px auto;
+    border-radius: 4px;
+    width: 500px;
+    height: 900px;
+    background-color: white;
+    box-shadow: 10px 5px 5px darkgray;
+    /*border: 2px solid darkblue ;*/
+
+}
+
+#top-content {
+    /*border: 2px solid green;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#top-content-gauche {
+    border-bottom: 1px solid lightblue;
+    width: 250px;
+    height: 50px;
+}
+
+#top-content-droite {
+    /*border: 2px solid lightgreen;*/
+    border-left: 2px dashed grey;
+    background-color: lightgray;
+    border-bottom: 1px solid lightgray;
+    width: 250px;
+    height: 50px;
+    border-top-right-radius: 4px;
+}
+
+#head-page {
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 15px;
+
+}
+
+#head-lien {
+    display: block;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: grey;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 15px;
+}
+
+#content {
+    margin: 50px auto auto auto;
+    /*border:2px solid red;*/
+}
+
+#text-content {
+    /*border:2px solid black;*/
+    margin: auto;
+    width: 300px;
+    text-align: left;
+}
+
+.text-input {
+    border: none;
+    width: 70%;
+    height: 25px;
+    background-color: #EFEFEF;
+    align-content: space-between;
+    margin-bottom: 10px;
+}
+
+
+
+#dateden {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 40%;
+    height: 25px;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+.labtext {
+    text-align: left;
+    margin: 10px auto 10px auto;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #676767;
+    font-size: 13px;
+}
+
+#cochetexte {
+    font-family: sans-serif;
+    font-weight: bold;
+    color: darkgray;
+    font-size: 13px;
+}
+
+#politique-texte {
+    font-family: sans-serif;
+    font-weight: bold;
+    color: dark;
+    font-size: 10px;
+}
+
+#bouton-ajouter {
+    height: 40px;
+    width: 100px;
+    background-color: ;
+    color: darkgray;
+    font-weight: 700;
+}

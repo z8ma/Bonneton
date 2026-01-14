@@ -1,0 +1,82 @@
+#main {
+	height: 600px;
+	background-color: #E1E1E1;
+}
+
+#top-content {
+
+	width: 100%;
+	margin-top: 30px;
+}
+
+#head-page {
+	font-family: sans-serif;
+	font-size: 14px;
+	font-weight: 600;
+	color: #232323;
+	text-align: center;
+	margin-top: 15px;
+
+}
+
+#fullcontent {
+	background-color: white;
+	width: 500px;
+	height: 100%;
+	margin: auto;
+	box-shadow: 10px 5px 5px darkgray;
+	/*border: solid black ;*/
+}
+
+#content {
+	margin: auto auto auto auto;
+	margin-top: 30px;
+	padding: 5px;
+	/*border:blue solid;*/
+	width: 50%;
+	height: 70%;
+	overflow: hidden;
+	text-align: center;
+}
+
+.labtext {
+	font-family: sans-serif;
+	font-weight: bold;
+	color: #676767;
+	font-size: 13px;
+}
+
+.text-input {
+	border: none;
+	height: 25px;
+	width: 100%;
+	background-color: #EFEFEF;
+	margin-bottom: 10px;
+}
+
+#dateden {
+	border: 2px solid #ccc;
+	border-radius: 5px;
+	width: 100%;
+	height: 25px;
+	background-color: #f8f8f8;
+	text-align: center;
+}
+
+#bouton {
+	display: block;
+	height: 40px;
+	width: 80%;
+	margin: auto;
+	border-radius: 8px;
+	color: white;
+	background-color: black;
+}
+
+#lienmdp {
+	text-decoration: none;
+	font-family: sans-serif;
+	font-weight: bold;
+	color: #676767;
+	font-size: 11px;
+}

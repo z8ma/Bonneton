@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+}
+
+.left-part {
+    width: 60%;
+}
+
+.left-part p {
+    text-align: center;
+    font-weight: 500;
+    font-size: large;
+    font-style: oblique;
+}
+
+.right-part {
+    width: 40%;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+h1:hover {
+    text-decoration: none;
+    font-weight: 900;
+}
+
+.command-details {
+    margin-top: 20px;
+}
+
+.validation-section {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.valider-panier {
+    text-decoration: none;
+    color: white;
+}
+
+.validation-section:hover {
+    background-color: #7D8491;
+    text-decoration: none;
+    font-weight: 900;
+}
+
+.poubelle:hover {
+    text-decoration: none;
+    font-weight: 900;
+}
+
+.poubelle img {
+    max-width: 100%;
+    height: auto;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.poubelle {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.poubelle p {
+    color: #ef233c;
+    font-size: 25px;
+}
