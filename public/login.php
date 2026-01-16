@@ -20,6 +20,7 @@ include("includes/header.php");
 			<div id="content">
 
 				<form method="POST" action="actions/traitement_connexion.php">
+					<?php echo csrf_field(); ?>
 					<div id="text-content">
 						<label class="labtext">E-mail :</label>
 						<br/><br/>

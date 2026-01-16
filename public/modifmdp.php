@@ -17,6 +17,7 @@ include("includes/header.php");
             <div id="top-content"><h1 id="head-page">MON MOT DE PASSE</h1></div>
             <div id="content">
                 <form method="POST" action="actions/traitement-modifmdp.php">
+                    <?php echo csrf_field(); ?>
                     <label for="nom" class="labtext">Votre mot de passe actuel :</label>
                     <br/><br/>
                     <input type="password" class="text-input" size="50" id="ancienmdp" name="ancienmdp">

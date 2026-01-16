@@ -1,17 +1,16 @@
-#main{
+.page-admin #main{
 	/*border: solid black;*/
-	height: 1000px;
+	min-height: 70vh;
 	display: flex;
 	justify-content: center;
 }
 
-#content{
+.page-admin #content{
 	/*border: solid red;*/
-	width: 60%;
+	width: 70%;
 	height: 100%;
-
 }
-.contentlien{
+.page-admin .contentlien{
 	text-decoration: none;
 	color: black;
 	display: block flex;
@@ -19,25 +18,38 @@
 	width:30%;
 	margin: 20px auto;
 	padding: 2%;
-	border: 2px solid grey;
+	border: none;
 	border-radius: 8px;
 	flex-shrink:0 ;
 	overflow: hidden;
+	background-color: #f5f5f5;
 
 	transition: 0.3s;
 }
 
-.contentlien:hover{
-	background-color: #EFEFEF;
+.page-admin .contentlien:hover{
+	background-color: #e5e5e5;
+	transform: translateY(-2px);
 }
 
 
-.image{
+.page-admin .image{
 	display: block;
 }
-.text-content{
+.page-admin .text-content{
 	margin:auto;
 	word-wrap: break-word;
+}
+
+.page-admin .contentlien-simple {
+	justify-content: center;
+	align-items: center;
+	font-weight: 600;
+	background-color: #f5f5f5;
+}
+
+.page-admin .contentlien-simple:hover {
+	background-color: #e5e5e5;
 }
 #deco{
 	display: block;
@@ -47,18 +59,4 @@
 	border-radius: 8px;
 	color: white;
 	background-color: black;
-}
-
-p {
-    font-weight: thin;
-    font-style: oblique;
-    font-size: 48px;
-    font-weight: 400;
-    margin-left: 5px;
-    text-align: center;
-}
-
-p:hover {
-    text-decoration: none;
-    font-weight: 900;
 }

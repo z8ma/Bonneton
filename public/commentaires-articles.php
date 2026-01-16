@@ -31,6 +31,6 @@ if ($resultat_afficher_com->num_rows > 0) {
     echo "</div>";
     echo "</div>";
 } else {
-    echo "Pas de commentaires sous cet article";
+    echo "<p class='empty-state'>Pas de commentaires sous cet article</p>";
 }
 $stmt_comments->close();

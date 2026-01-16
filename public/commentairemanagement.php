@@ -2,6 +2,7 @@
 session_start();
 ?>
 <link rel="stylesheet" type="text/css" href="assets/css/commentairemanagement-style.css" />
+<link rel="stylesheet" type="text/css" href="assets/css/admin-base.css">
 <?php
 
 if (!isset($_SESSION['accounttype'])) {
@@ -17,9 +18,10 @@ if (!isset($_SESSION['accounttype'])) {
 		$req = ("SELECT id,user_id,contenu FROM commentaires");
 		$resultat = $bdd->query($req);
 ?>
-			<h1>Les commentaires</h1>
-			<div id='main'>
-				<table>
+			<body class="admin-surface">
+			<h1 class="admin-title">Les commentaires</h1>
+			<div id='main' class="admin-card">
+				<table class="admin-table">
 					<tr>
 						<th>USER ID</th>
 						<th>Contenu</th>
@@ -33,13 +35,20 @@ if (!isset($_SESSION['accounttype'])) {
                         echo "<td>" . e($row['user_id']) . "</td>";
                         echo "<td>" . e($row['contenu']) . "</td>";
 						echo "</div>";
-						echo "<td><a href='actions/traitement-suppression-message.php?id=" . $row['id'] . "'>Supprimer</a></td>";
+						echo "<td>";
+						echo "<form method='POST' action='actions/traitement-suppression-message.php'>";
+						echo csrf_field();
+						echo "<input type='hidden' name='id' value='" . e($row['id']) . "'>";
+						echo "<button type='submit' class='admin-button admin-button-ghost'>Supprimer</button>";
+						echo "</form>";
+						echo "</td>";
 						echo "</tr>";
 					}
 					?>
 					<table>
 			</div>
-			<a class=button href="page_admin.php">Revenir à la page admin</a>
+			<a class="admin-button" href="page_admin.php">Revenir à la page admin</a>
+			</body>
 <?php
 
 	}

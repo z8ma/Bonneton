@@ -29,6 +29,7 @@ include("includes/menu.php");
 			<div id="content">
 
 				<form method="POST" action="actions/traitement_inscription.php">
+					<?php echo csrf_field(); ?>
 					<div id="text-content">
 						<label for="titre" class="labtext">Titre</label><br />
 						<input type="radio" class="titre" name="titre" value="m">M.

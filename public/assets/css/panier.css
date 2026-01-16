@@ -1,5 +1,6 @@
 .container {
     display: flex;
+    gap: 30px;
 }
 
 .left-part {
@@ -27,48 +28,75 @@ h1:hover {
     font-weight: 900;
 }
 
-.command-details {
-    margin-top: 20px;
-}
-
-.validation-section {
-    background-color: black;
-    color: white;
+.commande-card {
+    background-color: #f5f5f5;
+    border-radius: 14px;
     padding: 20px;
-    margin-top: 20px;
-    text-align: center;
-    margin-right: 20px;
+    margin-top: 10px;
 }
 
-.valider-panier {
-    text-decoration: none;
-    color: white;
+.command-details {
+    margin: 18px 0 24px;
+    color: #444;
 }
 
-.validation-section:hover {
+.panier-action {
+    margin: 14px 0;
+}
+
+.panier-button {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: 'Playfair Display', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.panier-button-primary {
+    background-color: #111;
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.panier-button-primary:hover {
     background-color: #7D8491;
-    text-decoration: none;
     font-weight: 900;
 }
 
-.poubelle:hover {
-    text-decoration: none;
+.panier-button-ghost {
+    background-color: transparent;
+    color: #b3122c;
+    border: 1px solid #f0d3d7;
+}
+
+.panier-button-ghost:hover {
+    background-color: #f8e9ec;
     font-weight: 900;
 }
 
-.poubelle img {
-    max-width: 100%;
-    height: auto;
-    margin: 10px;
-    box-sizing: border-box;
+.panier-item-action {
+    margin-top: 10px;
 }
 
-.poubelle {
-    display: inline-block;
-    text-decoration: none;
+.panier-item-remove {
+    background: transparent;
+    border: 1px solid #f0d3d7;
+    color: #b3122c;
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-family: 'Playfair Display', sans-serif;
 }
 
-.poubelle p {
+.panier-item-remove:hover {
+    background-color: #f8e9ec;
+    font-weight: 900;
+}
+
+.erreur {
     color: #ef233c;
-    font-size: 25px;
+    text-align: center;
+    font-weight: 600;
 }

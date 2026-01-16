@@ -1,5 +1,6 @@
 <?php 
-	session_start();
+session_start();
+include '../includes/config.php';
 
 	function verif($data){
 		$data=trim($data);
@@ -9,8 +10,12 @@
 	}
 
 
-	if(isset($_POST['sauvegarde'])){
-		extract($_POST);
+	$ancienmdp = $_POST['ancienmdp'] ?? '';
+	$nouveaumdp = $_POST['nouveaumdp'] ?? '';
+	$confirmmdp = $_POST['confirmmdp'] ?? '';
+	if (!verify_csrf()) {
+		header("Location: ../modifmdp.php?error=*Requete invalide !");
+		exit();
 	}
 
 	$ancienmdp=verif($ancienmdp);
@@ -22,7 +27,6 @@
 		exit();
 	}
 
-	include '../includes/config.php';
 	$bdd = obtenirConnexion();
 		$id=$_SESSION['id'];
 		$stmt = $bdd->prepare("SELECT motdepasse FROM user WHERE id = ?");
@@ -46,7 +50,7 @@
 				$upt=$bdd->prepare("UPDATE user SET motdepasse = ? WHERE id = ?");
 				$upt->bind_param("si", $nouveaumdphash, $id);
 				$upt->execute();
-				header("Location: ../profil.php");
+				header("Location: ../infouser.php");
 				$upt->close();
 				$stmt->close();
 				$bdd->close();

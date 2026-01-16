@@ -1,0 +1,99 @@
+.admin-title {
+    font-weight: 400;
+    font-style: oblique;
+    font-size: 42px;
+    text-align: center;
+    margin: 30px 0 20px;
+}
+
+.admin-title:hover {
+    font-weight: 900;
+}
+
+.admin-card {
+    width: 80%;
+    margin: 0 auto 40px;
+    background-color: #f5f5f5;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+}
+
+.admin-surface {
+    background: linear-gradient(180deg, #fbfbfb 0%, #f3f3f3 100%);
+    min-height: 100vh;
+    padding-top: 10px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.admin-table th {
+    background-color: #efefef;
+    font-weight: 600;
+}
+
+.admin-table tr:hover td {
+    background-color: #fafafa;
+}
+
+.admin-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    background-color: #111;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'Playfair Display', sans-serif;
+    transition: background-color 0.2s ease;
+}
+
+.admin-button:hover {
+    background-color: #7D8491;
+    font-weight: 900;
+}
+
+.admin-button-ghost {
+    background-color: transparent;
+    color: #b3122c;
+    border: 1px solid #f0d3d7;
+}
+
+.admin-button-ghost:hover {
+    background-color: #f8e9ec;
+}
+
+.admin-input {
+    border: 1px solid #d6d6d6;
+    border-radius: 10px;
+    height: 36px;
+    padding: 0 12px;
+    background-color: #f7f7f7;
+    font-family: 'Playfair Display', sans-serif;
+}
+
+.admin-input:focus {
+    outline: none;
+    border-color: #111;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}

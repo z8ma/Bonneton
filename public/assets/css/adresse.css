@@ -1,0 +1,86 @@
+.adresse-page #main {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+}
+
+.adresse-page #fullcontent {
+    background-color: white;
+    width: 520px;
+    margin: 30px auto;
+    box-shadow: 10px 5px 5px darkgray;
+}
+
+.adresse-page #content {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.adresse-page .adresse-form form {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.adresse-page .text-input {
+    width: 100%;
+}
+
+.adresse-items {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+}
+
+.adresse-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.adresse-item-text {
+    text-align: left;
+    font-size: 14px;
+}
+
+.adresse-delete-form {
+    margin: 0;
+}
+
+.adresse-actions {
+    margin-top: 16px;
+}
+
+.adresse-button {
+    display: inline-block;
+    height: 40px;
+    padding: 0 24px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    background-color: black;
+    font-family: 'Playfair Display', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.adresse-button:hover {
+    background-color: #7D8491;
+    font-weight: 900;
+}
+
+.adresse-button-danger {
+    background-color: #b3122c;
+}
+
+.adresse-button-danger:hover {
+    background-color: #7d0d1e;
+}
+
+.adresse-empty {
+    margin: 12px 0 0;
+    font-size: 14px;
+}

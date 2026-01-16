@@ -1,5 +1,6 @@
 <?php 
-	session_start();
+session_start();
+include '../includes/config.php';
 	
 	function verif($data){
 		$data=trim($data);
@@ -10,8 +11,16 @@
 
 
 
-	if(isset($_POST['inscription'])){
-		extract($_POST);
+	$titre = $_POST['titre'] ?? '';
+	$nom = $_POST['nom'] ?? '';
+	$prenom = $_POST['prenom'] ?? '';
+	$email = $_POST['email'] ?? '';
+	$motdepasse = $_POST['motdepasse'] ?? '';
+	$dateden = $_POST['dateden'] ?? '';
+	$accounttype = $_POST['accounttype'] ?? '';
+	if (!verify_csrf()) {
+		header("Location: ../register.php?error=*Requete invalide !");
+		exit();
 	}
 
 	$nom=verif($nom);
@@ -32,7 +41,6 @@
 
 
 	/*var_dump($_POST)*/
-	include '../includes/config.php';
 	$bdd = obtenirConnexion();
 		//regardes si il existe déjà un compte avec le même mail
 		$stmt_check = $bdd->prepare("SELECT 1 FROM user WHERE email = ?");
@@ -50,6 +58,7 @@
 			$rqt->bind_param("sssssss",$titre, $nom, $prenom, $email, $hashmotdepasse, $dateden,$accounttype);
 			$rqt->execute();
 			$id = $bdd->insert_id;
+			session_regenerate_id(true);
 			$_SESSION['titre']=$titre;
 			$_SESSION['nom']=$nom;
 			$_SESSION['prenom']=$prenom;

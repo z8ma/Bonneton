@@ -19,6 +19,7 @@ if (!isset($_SESSION['prenom'])) {
                 </div>
                 <div id="content">
                     <form method="POST" action="actions/traitement-infouser.php">
+                        <?php echo csrf_field(); ?>
                         <label for="nom" class="labtext">Votre Nom :</label>
                         <br /><br />
                         <input type="text" class="text-input" size="50" id="nom" name="nom" value="<?php echo e($_SESSION['nom']); ?>">

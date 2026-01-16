@@ -4,6 +4,7 @@ include 'includes/config.php';
 $bdd = obtenirConnexion();
 ?>
 <link rel="stylesheet" type="text/css" href="assets/css/accountmanagement-style.css">
+<link rel="stylesheet" type="text/css" href="assets/css/admin-base.css">
 <?php
 //Vérifie que c'est la session d'un admin
 if (!isset($_SESSION['accounttype'])) {
@@ -30,11 +31,11 @@ if (!isset($_SESSION['accounttype'])) {
             <title>Liste des utilisateurs</title>
         </head>
         
-        <body>
-            <h1>Liste des utilisateurs</h1>
+        <body class="admin-surface">
+            <h1 class="admin-title">Liste des utilisateurs</h1>
             <div id="main">
-                <div id="content">
-                    <table>
+                <div id="content" class="admin-card">
+                    <table class="admin-table">
                         <tr>
                             <th>ID</th>
                             <th>Nom</th>
@@ -49,7 +50,13 @@ if (!isset($_SESSION['accounttype'])) {
                         echo "<td>" . e($row_user['id']) . "</td>";
                         echo "<td>" . e($row_user['nom']) . "</td>";
                         echo "<td>" . e($row_user['prenom']) . "</td>";
-                        echo "<td><a href='actions/traitement-suppression.php?id=" . $row_user['id'] . "'>Supprimer</a></td>";
+                        echo "<td>";
+                        echo "<form method='POST' action='actions/traitement-suppression.php'>";
+                        echo csrf_field();
+                        echo "<input type='hidden' name='id' value='" . e($row_user['id']) . "'>";
+                        echo "<button type='submit' class='admin-button admin-button-ghost'>Supprimer</button>";
+                        echo "</form>";
+                        echo "</td>";
                         echo "</tr>";
                     }
                 }
@@ -60,7 +67,7 @@ if (!isset($_SESSION['accounttype'])) {
                     </table>
                 </div>
             </div>
-            <a class=button href="page_admin.php">Revenir à la page admin</a>
+            <a class="admin-button" href="page_admin.php">Revenir à la page admin</a>
         </body>
 
         </html>

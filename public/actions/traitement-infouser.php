@@ -1,5 +1,6 @@
 <?php 
-	session_start();
+session_start();
+include '../includes/config.php';
 
 	function verif($data){
 		$data=trim($data);
@@ -10,8 +11,13 @@
 
 	$iduser=$_SESSION['id'];
 
-	if(isset($_POST['sauvegarde'])){
-		extract($_POST);
+	$nom = $_POST['nom'] ?? '';
+	$prenom = $_POST['prenom'] ?? '';
+	$email = $_POST['email'] ?? '';
+	$dateden = $_POST['dateden'] ?? '';
+	if (!verify_csrf()) {
+		header("Location: ../infouser.php?error=*Requete invalide !");
+		exit();
 	}
 
 	$nom=verif($nom);
@@ -23,12 +29,11 @@
 		exit();
 	}
 
-	include '../includes/config.php';
 	$bdd = obtenirConnexion();
 		$rqt=$bdd->prepare("UPDATE user SET nom = ?, prenom = ?, email = ?, dateden = ? WHERE id = ?");
 		$rqt->bind_param("ssssi", $nom, $prenom, $email, $dateden, $iduser);
 		$rqt->execute();
-		header("Location: ../profil.php");
+		header("Location: ../infouser.php");
 		$rqt->close();
 		$bdd->close();
 		exit();

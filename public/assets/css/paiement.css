@@ -1,0 +1,64 @@
+.paiement-container {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+}
+
+.paiement-container h1 {
+    margin-bottom: 10px;
+}
+
+.paiement-container p {
+    margin: 0;
+}
+
+.paiement-container form {
+    margin-top: 12px;
+}
+
+.paiement-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.paiement-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+}
+
+.paiement-item img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
+}
+
+.paiement-item-meta p {
+    margin: 0;
+}
+
+.paiement-button {
+    display: inline-block;
+    height: 40px;
+    padding: 0 24px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    background-color: black;
+    font-family: 'Playfair Display', sans-serif;
+    cursor: pointer;
+}
+
+.paiement-button:hover {
+    background-color: #7D8491;
+    font-weight: 900;
+}

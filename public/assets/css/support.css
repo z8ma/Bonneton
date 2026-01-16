@@ -1,0 +1,44 @@
+.support-card {
+    width: 70%;
+    margin: 30px auto 60px;
+    background-color: #f5f5f5;
+    border-radius: 16px;
+    padding: 24px 28px;
+    text-align: center;
+}
+
+.support-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.support-link {
+    text-decoration: none;
+    color: #111;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 999px;
+    padding: 8px 16px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.support-link:hover {
+    background-color: #e5e5e5;
+    border-color: #d0d0d0;
+    font-weight: 900;
+}
+
+.support-sep {
+    color: #777;
+    font-size: 14px;
+}
+
+.support-note {
+    margin-top: 16px;
+    color: #666;
+    font-size: 13px;
+}

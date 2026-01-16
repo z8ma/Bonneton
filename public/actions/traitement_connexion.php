@@ -1,5 +1,6 @@
 <?php
-	session_start();
+session_start();
+include '../includes/config.php';
 									//Char spéciaux, backlashs, espaces
 
 	function verif($data){
@@ -10,8 +11,11 @@
 	}
 
 	
-	if(isset($_POST['connexion'])){
-		extract($_POST);
+	$email = $_POST['email'] ?? '';
+	$motdepasse = $_POST['motdepasse'] ?? '';
+if (!verify_csrf()) {
+		header("Location: ../login.php?error=*Requete invalide !");
+		exit();
 	}
 
 	$email=verif($email);
@@ -30,8 +34,7 @@
 	}
 
 
-									//Connexion + teste si pseudo et motdepasse correct
-	include '../includes/config.php';
+	//Connexion + teste si pseudo et motdepasse correct
 	$bdd = obtenirConnexion();
 		$stmt = $bdd->prepare("SELECT * FROM user WHERE email = ?");
 		$stmt->bind_param("s", $email);
@@ -44,6 +47,11 @@
 			exit();
 		}else{
 			if (password_verify($motdepasse, $row['motdepasse'])){
+				session_regenerate_id(true);
+				$update_login = $bdd->prepare("UPDATE user SET last_login_at = NOW() WHERE id = ?");
+				$update_login->bind_param("i", $row['id']);
+				$update_login->execute();
+				$update_login->close();
 				$_SESSION['titre']=$row['titre'];
 				$_SESSION['nom']=$row['nom'];
 				$_SESSION['prenom']=$row['prenom'];
@@ -51,13 +59,8 @@
 				$_SESSION['accounttype']=$row['accounttype'];
 				$_SESSION['id']=$row['id'];
 
-				if($_SESSION['accounttype']==='a'){
-					header("Location: ../page_admin.php");
-					exit();
-				}else{
 				header("Location: ../accueil.php");
 				exit();
-				}
 			}else{
 				header("Location: ../login.php?error=*Mot de passe incorrect !");
 				exit();
