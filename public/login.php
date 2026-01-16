@@ -8,6 +8,12 @@ include("includes/header.php");
 <body>
 	<?php include("includes/menu.php"); ?>
 
+	<?php
+	$redirect = $_GET['redirect'] ?? '';
+	if (!is_string($redirect) || $redirect === '' || $redirect[0] !== '/' || strpos($redirect, '://') !== false) {
+		$redirect = '';
+	}
+	?>
 	<div id="main">
 		<div id="fullcontent">
 			<div id="top-content">
@@ -21,6 +27,9 @@ include("includes/header.php");
 
 				<form method="POST" action="actions/traitement_connexion.php">
 					<?php echo csrf_field(); ?>
+					<?php if (!empty($redirect)) { ?>
+						<input type="hidden" name="redirect" value="<?php echo e($redirect); ?>">
+					<?php } ?>
 					<div id="text-content">
 						<label class="labtext">E-mail :</label>
 						<br/><br/>

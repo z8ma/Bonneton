@@ -1,7 +1,8 @@
 <?php
 session_start();
 if (!isset($_SESSION['id'])) {
-    header("Location: login.php");
+    $redirect = urlencode($_SERVER['REQUEST_URI'] ?? '/vendeur.php');
+    header("Location: login.php?redirect=" . $redirect);
     exit;
 }
 include("includes/header.php");

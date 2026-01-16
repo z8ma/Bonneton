@@ -7,7 +7,8 @@ Schema principal (MariaDB/MySQL).
 - `article` : produits (prix en `price_cents`, `currency`, stock, status).
 - `article_images` : images produit (primary + position).
 - `categories` / `article_categories` : categories et mapping N-N.
-- `commentaires` : commentaires par article (image optionnelle).
+- `commentaires` : commentaires par article (image optionnelle, note, compteur de likes).
+- `comment_likes` : likes par commentaire (unique par user/comment).
 - `panier` : articles en panier (qty).
 - `addresses` : adresses livraison/facturation.
 - `orders` : commandes (status, total, addresses).
@@ -25,6 +26,11 @@ Schema principal (MariaDB/MySQL).
 ### Favoris
 - Toggle via `favorites` (unique par user/article).
 - Suppression automatique si article supprime (FK cascade).
+
+### Commentaires & likes
+- `comment_likes` pour les likes (unique par user/comment).
+- `commentaires.likes_count` conserve le compteur.
+- Classement quotidien via `commentaires.rank_score` (mis a jour une fois/jour).
 
 ### Vendeur
 - Ajout d'article dans `article`.

@@ -65,7 +65,8 @@
         <li class="normal"><a href="pageNews.php">Nouveautés</a></li>
         <li class="normal"><a href="pageApropos.php">Qui sommes-nous ?</a></li>
         <?php if (!isset($_SESSION['id'])) { ?>
-            <li class="normal"><a href="login.php">Connexion</a></li>
+            <?php $redirect = $_SERVER['REQUEST_URI'] ?? '/accueil.php'; ?>
+            <li class="normal"><a href="login.php?redirect=<?php echo e($redirect); ?>">Connexion</a></li>
         <?php } else { ?>
             <li class="account-menu diffconnecte">
                 <a href="infouser.php" class="account-trigger">

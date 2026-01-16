@@ -59,7 +59,12 @@ if (!verify_csrf()) {
 				$_SESSION['accounttype']=$row['accounttype'];
 				$_SESSION['id']=$row['id'];
 
-				header("Location: ../accueil.php");
+				$redirect = $_POST['redirect'] ?? '';
+				if (is_string($redirect) && $redirect !== '' && $redirect[0] === '/' && strpos($redirect, '://') === false) {
+					header("Location: .." . $redirect);
+				} else {
+					header("Location: ../accueil.php");
+				}
 				exit();
 			}else{
 				header("Location: ../login.php?error=*Mot de passe incorrect !");

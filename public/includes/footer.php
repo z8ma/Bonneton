@@ -46,6 +46,48 @@
         });
     });
 </script>
+<script>
+    (function () {
+        var target = window.scrollY || window.pageYOffset;
+        var current = target;
+        var ticking = false;
+        var ease = 0.12;
+        var maxDelta = 120;
+        var isTouch = false;
+
+        window.addEventListener("touchstart", function () {
+            isTouch = true;
+        }, { passive: true });
+
+        function raf() {
+            var diff = target - current;
+            current += diff * ease;
+            if (Math.abs(diff) < 0.5) {
+                current = target;
+            }
+            window.scrollTo(0, current);
+            if (Math.abs(diff) > 0.5) {
+                requestAnimationFrame(raf);
+            } else {
+                ticking = false;
+            }
+        }
+
+        window.addEventListener("wheel", function (e) {
+            if (isTouch) {
+                return;
+            }
+            e.preventDefault();
+            var delta = Math.max(-maxDelta, Math.min(maxDelta, e.deltaY));
+            target += delta;
+            target = Math.max(0, Math.min(target, document.documentElement.scrollHeight - window.innerHeight));
+            if (!ticking) {
+                ticking = true;
+                requestAnimationFrame(raf);
+            }
+        }, { passive: false });
+    })();
+</script>
 
 </body>
 

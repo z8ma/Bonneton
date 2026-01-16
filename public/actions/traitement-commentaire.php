@@ -6,7 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !verify_csrf()) {
     exit;
 }
 if (!isset($_SESSION['id'])) {
-    header("Location: ../login.php");
+    $redirect = urlencode("/page_details_article.php?id=" . (int) ($_POST['article_id'] ?? 0));
+    header("Location: ../login.php?redirect=" . $redirect);
     exit;
 }
 

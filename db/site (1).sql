@@ -121,7 +121,10 @@ CREATE TABLE `commentaires` (
   `date_commentaire` timestamp NOT NULL DEFAULT current_timestamp(),
   `id` int(11) NOT NULL,
   `img` varchar(255) NOT NULL,
-  `rating` tinyint(4) DEFAULT NULL
+  `rating` tinyint(4) DEFAULT NULL,
+  `likes_count` int(11) NOT NULL DEFAULT 0,
+  `rank_score` int(11) NOT NULL DEFAULT 0,
+  `rank_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -130,6 +133,19 @@ CREATE TABLE `commentaires` (
 
 INSERT INTO `commentaires` (`user_id`, `article_id`, `contenu`, `date_commentaire`, `id`, `img`) VALUES
 (3, 12, 'Très bon article', '2024-05-15 21:20:54', 6, '');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `comment_likes`
+--
+
+CREATE TABLE `comment_likes` (
+  `id` int(11) NOT NULL,
+  `comment_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -309,6 +325,14 @@ ALTER TABLE `commentaires`
   ADD KEY `article_id` (`article_id`);
 
 --
+-- Index pour la table `comment_likes`
+--
+ALTER TABLE `comment_likes`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uniq_comment_like` (`comment_id`,`user_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Index pour la table `historique_achat`
 --
 ALTER TABLE `historique_achat`
@@ -400,6 +424,12 @@ ALTER TABLE `commentaires`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT pour la table `comment_likes`
+--
+ALTER TABLE `comment_likes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT pour la table `panier`
 --
 ALTER TABLE `panier`
@@ -470,6 +500,13 @@ ALTER TABLE `article_categories`
 ALTER TABLE `commentaires`
   ADD CONSTRAINT `commentaires_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `commentaires_ibfk_2` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `comment_likes`
+--
+ALTER TABLE `comment_likes`
+  ADD CONSTRAINT `comment_likes_ibfk_1` FOREIGN KEY (`comment_id`) REFERENCES `commentaires` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `comment_likes_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `historique_achat`
